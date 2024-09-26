@@ -1,10 +1,10 @@
-import { ThemeToggle } from "@/components/theme-toggle";
+import Navbar from "@/components/navbar";
 
 export default function Home() {
   return (
-    <>
-    <div>Wedding List</div>
-    <ThemeToggle/>
-    </>
+    <div>
+      <Navbar/>
+      <h1>COnteudo Geral</h1>
+    </div>
   );
 }
