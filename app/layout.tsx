@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {Darker_Grotesque} from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const darkerGrotesque = Darker_Grotesque({subsets: ['latin']})
 
@@ -18,7 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={darkerGrotesque.className}>
-        {children}
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+          >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
