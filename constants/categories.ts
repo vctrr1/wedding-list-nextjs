@@ -5,32 +5,32 @@ interface ProductCategories {
   
   export const productCategories: ProductCategories[] = [
     {
-        name: "Móveis",
-      color: "roxo",
+      name: "Móveis",
+      color: "purple",
     },
     {
-        name: "Eletrodomésticos",
+      name: "Eletrodomésticos",
       color: "indigo",
     },
     {
-        name: "Cozinha",
-      color: "laranja",
+      name: "Cozinha",
+      color: "orange",
     },
     {
-        name: "Banheiro",
-      color: "azul",
+      name: "Banheiro",
+      color: "blue",
     },
     {
-        name: "Lavanderia",
-      color: "amarelo",
+      name: "Lavanderia",
+      color: "yellow",
     },
     {
-        name: "Quarto casal",
-      color: "vermelho",
+      name: "Quarto casal",
+      color: "red",
     },
     {
-        name: "Sala de estar",
-      color: "verde",
+      name: "Sala de estar",
+      color: "green",
     },
   ]
   
