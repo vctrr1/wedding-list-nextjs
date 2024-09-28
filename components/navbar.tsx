@@ -1,4 +1,4 @@
-import { LogIn } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
 
@@ -10,7 +10,7 @@ export default function Navbar() {
         <div className="gap-2 flex">
           <ThemeToggle/>     
           <Button size="icon" variant="ghost">
-            <LogIn className="h-[1.2rem] w-[1.2rem]"/>
+            <LogOut className="h-[1.2rem] w-[1.2rem]"/>
           </Button>
         </div>
       </div>

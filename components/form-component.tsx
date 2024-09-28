@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ChartColumnStacked, PlusIcon } from "lucide-react";
+import { House, PlusIcon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,7 +15,7 @@ import { useState } from "react";
 
 export default function FormComponent() {
 
-    const [position, setPosition] = useState("")
+    const [category, setCategory] = useState("")
 
     return(
         <div className="flex w-[70%] items-center space-x-2">
@@ -23,10 +23,10 @@ export default function FormComponent() {
         <Input type="number" placeholder="Preço (Opcional)" className="w-[30%] text-xl"/>
         <DropdownMenu >
           <DropdownMenuTrigger asChild className="select-none">
-            <ChartColumnStacked size={38}/>
+            <House size={38} strokeWidth={1.25}/>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="w-52">
-            <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+            <DropdownMenuRadioGroup value={category} onValueChange={setCategory}>
               {productCategories.map(item => (
                 <div key={item.name} className="flex items-center">
                   <div className="bg-red-700 h-2 w-2 rounded-full ml-3 mt-[3px]" style={{backgroundColor: item.color}} ></div>

@@ -22,7 +22,7 @@ interface ProductCategories {
     },
     {
       name: "Lavanderia",
-      color: "yellow",
+      color: "cyan",
     },
     {
       name: "Quarto casal",
