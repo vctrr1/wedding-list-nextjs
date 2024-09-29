@@ -1,7 +1,9 @@
+"use client"
+
 import { LogOut } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
-import Link from "next/link";
+import { logout } from "@/actions/logout";
 
 export default function Navbar() {
     return (
@@ -10,11 +12,10 @@ export default function Navbar() {
         <h1 className="text-2xl">Lista de Enxoval</h1>
         <div className="gap-2 flex">
           <ThemeToggle/>     
-          <Link href="/">
-            <Button size="icon" variant="ghost">
-              <LogOut className="h-[1.2rem] w-[1.2rem]"/>
-            </Button>
-          </Link>
+          <Button size="icon" variant="ghost" onClick={() => logout()}>
+            <LogOut className="h-[1.2rem] w-[1.2rem]"/>
+          </Button>
+
         </div>
       </div>
     );

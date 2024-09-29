@@ -1,3 +1,4 @@
+import login from "@/actions/login"
 import LoginButton from "@/components/login-button"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -14,7 +15,7 @@ export default function Home(){
                     <CardTitle className="flex justify-center">Login</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <form className="text-left ">
+                  <form action={login} className="text-left ">
                     <div className="space-y-6 mb-5">
                       <div className="grid w-full items-center gap-1.5">
                         <Label htmlFor="name" className="text-lg">Nome</Label>
