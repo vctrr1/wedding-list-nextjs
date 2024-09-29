@@ -15,7 +15,7 @@ export default function Register(){
                 <CardTitle className="flex items-center justify-center gap-2">
                   Cadastre-se
                 </CardTitle>
-                <CardDescription className="flex items-center justify-center">Crie uma conta gratuitamente</CardDescription>
+                <CardDescription className="flex items-center justify-center text-base">Crie uma conta gratuitamente</CardDescription>
             </CardHeader>
                 <CardContent>
                   <form action={register} className="text-left">
@@ -30,7 +30,7 @@ export default function Register(){
                           placeholder="Seu nome"
                         />
                       </div>
-                      <div className="grid w-full max-w-sm items-center gap-1.5">
+                      <div className="grid w-full items-center gap-1.5">
                         <Label htmlFor="email" className="text-base">Email</Label>
                         <Input
                             className="text-base"
