@@ -15,7 +15,7 @@ export default function Home(){
                 </CardHeader>
                 <CardContent>
                   <form className="text-left ">
-                    <div className="space-y-6">
+                    <div className="space-y-6 mb-5">
                       <div className="grid w-full items-center gap-1.5">
                         <Label htmlFor="name" className="text-lg">Nome</Label>
                         <Input
@@ -37,10 +37,10 @@ export default function Home(){
                         />
                       </div>
                     </div>
+                    <LoginButton label="Login"/>
                   </form>
                 </CardContent>
                 <CardFooter className="flex flex-col gap-2">
-                    <LoginButton label="Login"/>
                     <Link href="/register" className="text-base">
                         Cadrastar-se
                     </Link>

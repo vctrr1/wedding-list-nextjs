@@ -1,3 +1,4 @@
+import register from "@/actions/register"
 import LoginButton from "@/components/login-button"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -17,8 +18,8 @@ export default function Register(){
                 <CardDescription className="flex items-center justify-center">Crie uma conta gratuitamente</CardDescription>
             </CardHeader>
                 <CardContent>
-                  <form className="text-left ">
-                    <div className="space-y-6">
+                  <form action={register} className="text-left">
+                    <div className="space-y-6 mb-5">
                       <div className="grid w-full items-center gap-1.5">
                         <Label htmlFor="name" className="text-lg">Nome</Label>
                         <Input
@@ -32,7 +33,7 @@ export default function Register(){
                       <div className="grid w-full max-w-sm items-center gap-1.5">
                         <Label htmlFor="email" className="text-base">Email</Label>
                         <Input
-                        className="text-base"
+                            className="text-base"
                             name="email"
                             type="email"
                             id="email"
@@ -42,7 +43,7 @@ export default function Register(){
                       <div className="grid w-full items-center gap-1.5">
                         <Label htmlFor="password" className="text-lg">Senha</Label>
                         <Input
-                            className="text-base"
+                          className="text-base"
                           name="password"
                           type="password"
                           id="password"
@@ -50,10 +51,10 @@ export default function Register(){
                         />
                       </div>
                     </div>
+                    <LoginButton label="Criar conta"/>
                   </form>
                 </CardContent>
-                <CardFooter className="flex flex-col gap-2">
-                    <LoginButton label="Criar conta"/>
+                <CardFooter className="flex flex-col">
                     <Link href="/" className="text-base">
                         Voltar para Login
                     </Link>

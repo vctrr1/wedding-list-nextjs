@@ -3,7 +3,7 @@ import {Darker_Grotesque} from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SessionProvider } from "next-auth/react";
-import { auth } from "@/lib/auth";
+import { auth } from "../auth";
 
 const darkerGrotesque = Darker_Grotesque({subsets: ['latin']})
 
