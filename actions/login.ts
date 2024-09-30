@@ -5,7 +5,9 @@ import { AuthError } from "next-auth";
 import { redirect } from "next/navigation";
 
 export default async function login(formData: FormData){
+    
     const entries = Array.from(formData.entries());
+    
     const { name, password } = Object.fromEntries(entries) as {
       name: string;
       password: string;
