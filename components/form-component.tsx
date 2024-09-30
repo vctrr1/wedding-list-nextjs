@@ -11,16 +11,18 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { productCategories } from "@/constants/categories";
 import { DropdownMenuRadioGroup } from "@radix-ui/react-dropdown-menu";
-import React, { useState } from "react";
-import { useSession } from "next-auth/react";
+import React, { useRef, useState } from "react";
 import { createItem } from "@/actions/items";
 
-export default function FormComponent(){
+interface FormComponentProps{
+  userId: string
+}
+
+
+export default function FormComponent({userId}: FormComponentProps){
+  const formRef = useRef<HTMLFormElement>(null)
   
   const [category, setCategory] = useState("")
-
-  const session = useSession()
-  console.log(session)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,19 +31,19 @@ export default function FormComponent(){
     const productName = formData.get("product") as string
     const productPrice = formData.get("price") as string
     const productCategory = category;
-    const userId = session.data?.user?.id
 
     if(!productName || !productCategory || !userId){
       throw new Error("Insira as informações")
     }else{
       const parcedPrice = productPrice ? parseFloat(productPrice) : null
       createItem(productName, parcedPrice, productCategory, userId)
+      formRef.current?.reset()
     }
   };
 
   return(
     <div className="flex items-center w-[80%]">
-      <form onSubmit={handleSubmit} className="flex items-center space-x-2 w-full">      
+      <form ref={formRef} onSubmit={handleSubmit} className="flex items-center space-x-2 w-full">      
         <Input type="text" placeholder="Produto" name="product" className="text-xl w-[70%]"/>
         <Input type="number" placeholder="Preço (Opcional)" name="price" className="w-[30%] text-xl"/>
         <DropdownMenu >
