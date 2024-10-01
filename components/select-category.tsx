@@ -1,9 +1,13 @@
 import { productCategories } from "@/constants/categories";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 
-export default function SelectCategoryItem(){
+interface SelectCategoryItemProps{
+  onSelectCategory: (value: string) => void;
+}
+
+export default function SelectCategoryItem({onSelectCategory}: SelectCategoryItemProps){
     return(
-        <Select>
+        <Select onValueChange={onSelectCategory}>
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Escolher categoria"/>
             </SelectTrigger>

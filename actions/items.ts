@@ -44,24 +44,37 @@ export async function updateItemAsCompleted(itemId:string, isCompleted: boolean)
     revalidatePath("/main")
 }
 
-export async function updateItem(itemId:string, itemName: string, productPrice: number | null, productCategory: string) {
+export async function updateItem(formData: FormData, category: string) {
+
+    const entries = Array.from(formData.entries())
+    const {id, name, price } = Object.fromEntries(entries) as {
+        id: string
+        name: string;
+        price: string
+    };
+
+    // Converter o preço para número
+    const parcedPrice = price ? parseFloat(price) : null
+
     try {
         await db.item.update({
             where: {
-                id: itemId
+                id: id
             },
             data: {
-                name: itemName,
-                category: productCategory,
-                price: productPrice
+                name: name,
+                category: category,
+                price: parcedPrice
             }
 
         })
+        revalidatePath("/main")
+        return{success: true, message: "Atualizado com sucesso!"}
     } catch (error) {
         console.log(error)
+        return { success: false, message: "Erro ao atualizar o item." };
     }
 
-    revalidatePath("/main")
 }
 
 export async function getItemsByCategory(userId: string) {
