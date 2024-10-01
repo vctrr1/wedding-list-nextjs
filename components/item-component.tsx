@@ -1,7 +1,7 @@
 "use client"
 
 import { deleteItem, updateItemAsCompleted } from "@/actions/items";
-import { TrashIcon } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { useTransition } from "react";
 import UpdateItem from "./update-item-component";
@@ -21,7 +21,7 @@ export default function ItemComponent({itemId, itemName, isCompleted}: ItemCompo
   <Card className="w-[80%]">
       {/* se o item for isCompleted=true vai deixar o conteudo do card com o pacidade 50%*/}
       <CardContent className={`${isCompleted ? "opacity-50" : ""} flex items-center gap-3 p-0 justify-between`}>
-        <div className="flex items-center gap-3 pl-3">
+        <div className="flex items-center gap-3 pl-4">
           <input
             id={itemId}
             type="checkbox"
@@ -44,10 +44,10 @@ export default function ItemComponent({itemId, itemName, isCompleted}: ItemCompo
           `}</style>
           <h1 className="text-[22px]">{itemName}</h1>
         </div>
-        <div className="flex items-center gap-3 p-3">
-            <UpdateItem/>
+        <div className="flex items-center gap-3 p-2 pr-3">
+            <UpdateItem itemId={itemId}/>
           <button onClick={async () => await deleteItem(itemId)}>
-            <TrashIcon className="text-red-600 " strokeWidth={1.25}/>
+            <Trash2 className="text-red-600 " strokeWidth={1.25}/>
           </button>
         </div>
       </CardContent>

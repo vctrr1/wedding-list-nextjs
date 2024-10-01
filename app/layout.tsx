@@ -3,6 +3,7 @@ import {Darker_Grotesque} from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SessionProvider } from "next-auth/react";
+import { Toaster } from "@/components/ui/sonner"
 
 const darkerGrotesque = Darker_Grotesque({subsets: ['latin']})
 
@@ -28,6 +29,7 @@ export default async function RootLayout({
                 enableSystem
               >
               {children}
+              <Toaster/>
             </ThemeProvider>
           </SessionProvider>
         </body>
