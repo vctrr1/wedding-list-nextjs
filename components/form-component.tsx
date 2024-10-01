@@ -20,6 +20,8 @@ interface FormComponentProps{
 
 
 export default function FormComponent({userId}: FormComponentProps){
+
+  //propriedade do formulario usada para limpar os campos quando for criado o item
   const formRef = useRef<HTMLFormElement>(null)
   
   const [category, setCategory] = useState("")
