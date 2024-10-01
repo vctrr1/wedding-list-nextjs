@@ -2,7 +2,6 @@
 
 import { db } from "@/lib/db";
 import { saltAndHashPassword } from "@/utils/crip-password";
-import { redirect } from "next/navigation";
 
 export default async function register(formData: FormData) {
     /* Tambem pode pegar os dados dessa forma
@@ -19,7 +18,7 @@ export default async function register(formData: FormData) {
     }
 
     if(!name || !email || !password){
-        throw new Error("Preenha todos os campos")
+        return { success: false, message: "Preencha todos os campos" };
     }
     //era findUnique mas como eu quero usar o nome como login e não email, preciso verificar se algum dos dois ja existe
     //findUnique do Prisma espera que seja passado um campo único (como id, email, ou name), e não aceita uma condição composta com OR.
@@ -33,7 +32,7 @@ export default async function register(formData: FormData) {
     })
 
     if(user){
-        throw new Error("Usuário ja cadastrado")
+        return {success: false, message: "Usuário ja cadastrado"}
     }
 
     await db.user.create({
@@ -44,5 +43,5 @@ export default async function register(formData: FormData) {
         }
     })
 
-    redirect("/")
+    return {success: true, message: "Usuário cadastrado com sucesso!"}
 }
