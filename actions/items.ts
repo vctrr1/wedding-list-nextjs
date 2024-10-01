@@ -28,7 +28,7 @@ export async function deleteItem(itemId: string){
 
 export async function updateItemAsCompleted(itemId:string, isCompleted: boolean) {
     try {
-        const item = await db.item.update({
+        await db.item.update({
             where: {
                 id: itemId
             },
@@ -37,7 +37,26 @@ export async function updateItemAsCompleted(itemId:string, isCompleted: boolean)
             }
 
         })
-        console.log(item)
+    } catch (error) {
+        console.log(error)
+    }
+
+    revalidatePath("/main")
+}
+
+export async function updateItem(itemId:string, itemName: string, productPrice: number | null, productCategory: string) {
+    try {
+        await db.item.update({
+            where: {
+                id: itemId
+            },
+            data: {
+                name: itemName,
+                category: productCategory,
+                price: productPrice
+            }
+
+        })
     } catch (error) {
         console.log(error)
     }
