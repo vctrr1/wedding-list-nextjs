@@ -13,14 +13,14 @@ import { productCategories } from "@/constants/categories";
 import { DropdownMenuRadioGroup } from "@radix-ui/react-dropdown-menu";
 import React, { useRef, useState } from "react";
 import { createItem } from "@/actions/items";
-
+import {toast} from "sonner"
+ 
 interface FormComponentProps{
   userId: string
 }
 
 
 export default function FormComponent({userId}: FormComponentProps){
-
   //propriedade do formulario usada para limpar os campos quando for criado o item
   const formRef = useRef<HTMLFormElement>(null)
   
@@ -35,11 +35,12 @@ export default function FormComponent({userId}: FormComponentProps){
     const productCategory = category;
 
     if(!productName || !productCategory || !userId){
-      throw new Error("Insira as informações")
+      toast.warning("Preencha todos os campos")
     }else{
       const parcedPrice = productPrice ? parseFloat(productPrice) : null
       createItem(productName, parcedPrice, productCategory, userId)
       formRef.current?.reset()
+      toast.success("Cadastrado com sucesso!")
     }
   };
 
