@@ -15,7 +15,6 @@ export default function Navbar() {
           <Button size="icon" variant="ghost" onClick={() => logout()}>
             <LogOut className="h-[1.2rem] w-[1.2rem]"/>
           </Button>
-
         </div>
       </div>
     );

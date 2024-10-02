@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import {Darker_Grotesque} from "next/font/google";
+import {Inconsolata} from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "@/components/ui/sonner"
 
-const darkerGrotesque = Darker_Grotesque({subsets: ['latin']})
-
+const inconsolata = Inconsolata({subsets: ['latin'], weight: ["300"]})
 
 export const metadata: Metadata = {
   title: "Wedding List",
@@ -21,7 +20,7 @@ export default async function RootLayout({
   return (
    
       <html lang="en" suppressHydrationWarning={true}>
-        <body className={darkerGrotesque.className}>
+        <body className={inconsolata.className}>
           <SessionProvider>
             <ThemeProvider
                 attribute="class"

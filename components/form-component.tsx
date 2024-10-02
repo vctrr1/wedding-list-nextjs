@@ -47,13 +47,13 @@ export default function FormComponent({userId}: FormComponentProps){
   return(
     <div className="flex items-center w-[80%]">
       <form ref={formRef} onSubmit={handleSubmit} className="flex items-center space-x-2 w-full">      
-        <Input type="text" placeholder="Produto" name="product" className="text-xl w-[70%]"/>
-        <Input type="number" placeholder="Preço (Opcional)" name="price" className="w-[30%] text-xl"/>
+        <Input type="text" placeholder="Produto" name="product" className="text-lg w-[70%]"/>
+        <Input type="number" placeholder="Preço (Opcional)" name="price" className="w-[30%] text-lg"/>
         <DropdownMenu >
           <DropdownMenuTrigger asChild className="select-none">
             <House size={38} strokeWidth={1.25}/>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-52">
+          <DropdownMenuContent className="w-60">
             <DropdownMenuRadioGroup value={category} onValueChange={setCategory}>
               {productCategories.map(item => (
                 <div key={item.name} className="flex items-center">
