@@ -18,7 +18,7 @@ export default function ItemComponent({itemId, itemName, isCompleted}: ItemCompo
   const [isPending, startTransition] = useTransition()
 
   return (
-  <Card className="w-[80%]">
+  <Card>
       {/* se o item for isCompleted=true vai deixar o conteudo do card com o pacidade 50%*/}
       <CardContent className={`${isCompleted ? "opacity-50" : ""} flex items-center gap-3 p-0 justify-between`}>
         <div className="flex items-center gap-3 pl-4">
@@ -42,7 +42,7 @@ export default function ItemComponent({itemId, itemName, isCompleted}: ItemCompo
               align-items: center;
             }
           `}</style>
-          <h1 className="text-[22px]">{itemName}</h1>
+          <h1 className="text-[18px]">{itemName}</h1>
         </div>
         <div className="flex items-center gap-3 p-2 pr-3">
             <UpdateItem itemId={itemId}/>
