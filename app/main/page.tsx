@@ -5,7 +5,15 @@ import ItemComponent from "@/components/item-component";
 import Navbar from "@/components/navbar";
 import { productCategories } from "@/constants/categories";
 import { redirect } from "next/navigation";
-import {Item} from "@prisma/client"
+
+interface Item {
+  id: string;
+  name: string;
+  price?: number | null,
+  category: string;
+  purchased: boolean;
+  // outros campos, se necessário
+}
 
 export default async function Main() {
   const session = await auth()
