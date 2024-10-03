@@ -47,8 +47,8 @@ export default function FormComponent({userId}: FormComponentProps){
   return(
     <div className="flex items-center w-[80%]">
       <form ref={formRef} onSubmit={handleSubmit} className="flex items-center space-x-2 w-full">      
-        <Input type="text" placeholder="Produto" name="product" className="text-lg w-[70%]"/>
-        <Input type="number" placeholder="Preço (Opcional)" name="price" className="w-[30%] text-lg"/>
+        <Input type="text" placeholder="Produto" name="product" className="text-base w-[70%]"/>
+        <Input type="number" placeholder="Preço (Opcional)" name="price" className="w-[30%] text-base"/>
         <DropdownMenu >
           <DropdownMenuTrigger asChild className="select-none">
             <House size={38} strokeWidth={1.25}/>
