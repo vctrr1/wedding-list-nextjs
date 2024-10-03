@@ -40,7 +40,7 @@ export default function UpdateItem({itemId}: UpdateItemsProps) {
             <EditIcon strokeWidth={1.25}/>
           </Button>
         </DialogTrigger>
-        <DialogContent className="w-[50%] flex flex-col items-center justify-center rounded-lg">
+        <DialogContent className="sm:w-[50%] w-[90%] flex flex-col items-center justify-center rounded-lg">
             <DialogHeader className="mt-4 flex items-center">
                 <DialogTitle className="text-xl">Atualizar Item</DialogTitle>
                 <DialogDescription>Preencha o form.</DialogDescription>
