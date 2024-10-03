@@ -30,7 +30,7 @@ export default function Register(){
 
   return(
       <div className="min-h-screen flex items-center justify-center">
-          <Card className="w-[60%]">
+          <Card className="sm:w-[60%] w-[90%]">
           <CardHeader className="">
               <CardTitle className="flex justify-end"><ThemeToggle/></CardTitle>
               <CardTitle className="flex items-center justify-center gap-2">
