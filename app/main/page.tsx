@@ -4,8 +4,8 @@ import FormComponent from "@/components/form-component";
 import ItemComponent from "@/components/item-component";
 import Navbar from "@/components/navbar";
 import { productCategories } from "@/constants/categories";
-
 import { redirect } from "next/navigation";
+import {Item} from "@prisma/client"
 
 export default async function Main() {
   const session = await auth()
@@ -15,9 +15,9 @@ export default async function Main() {
     redirect("/")
   }
   
-  const items = await getItemsByCategory(session?.user?.id)
+  const items: Item[] = await getItemsByCategory(session?.user?.id)
 
-  const categoryWithItems = productCategories.filter((category) => items.some((item) => item.category === category.name))
+  const categoryWithItems = productCategories.filter((category) => items.some((item: Item) => item.category === category.name))
 
 
   return (
