@@ -14,7 +14,7 @@ interface ProductCategories {
     },
     {
       name: "Cozinha",
-      color: "Coral",
+      color: "MediumSeaGreen",
     },
     {
       name: "Banheiro",
@@ -30,7 +30,7 @@ interface ProductCategories {
     },
     {
       name: "Sala de estar",
-      color: "MediumSeaGreen",
+      color: "Coral",
     },
   ]
   
