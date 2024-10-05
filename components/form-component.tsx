@@ -31,14 +31,16 @@ export default function FormComponent({userId}: FormComponentProps){
 
     const formData = new FormData(e.currentTarget);
     const productName = formData.get("product") as string
-    const productPrice = formData.get("price") as string
+    let productPrice = formData.get("price") as string
     const productCategory = category;
 
     if(!productName || !productCategory || !userId){
       toast.warning("Preencha todos os campos")
     }else{
-      const parcedPrice = productPrice ? parseFloat(productPrice) : null
-      createItem(productName, parcedPrice, productCategory, userId)
+      // Substitui vírgula por ponto antes de fazer o parse para float
+      productPrice = productPrice.replace(",", ".");
+      const parsedPrice = productPrice ? parseFloat(productPrice) : null;
+      createItem(productName, parsedPrice, productCategory, userId)
       formRef.current?.reset()
       toast.success("Cadastrado com sucesso!")
     }
@@ -48,7 +50,7 @@ export default function FormComponent({userId}: FormComponentProps){
     <div className="flex items-center w-[80%]">
       <form ref={formRef} onSubmit={handleSubmit} className="flex items-center space-x-2 w-full">      
         <Input type="text" placeholder="Produto" name="product" className="text-base w-[70%]"/>
-        <Input type="number" placeholder="Preço (Opcional)" name="price" className="w-[30%] text-base"/>
+        <Input type="text" placeholder="Preço (Opcional)" name="price" className="w-[30%] text-base"/>
         <DropdownMenu >
           <DropdownMenuTrigger asChild className="select-none">
             <House size={38} strokeWidth={1.25}/>

@@ -43,7 +43,7 @@ export default function Home(){
                 </CardContent>
                 <CardFooter className="flex flex-col gap-2">
                     <Link href="/register" className="text-base">
-                        Cadrastar-se
+                        Cadastrar-se
                     </Link>
                 </CardFooter>
             </Card>

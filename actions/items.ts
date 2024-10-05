@@ -77,7 +77,7 @@ export async function updateItem(formData: FormData, category: string) {
 
 }
 
-export async function getItemsByCategory(userId: string) {
+export async function getItems(userId: string) {
     const items = await db.item.findMany({
         where:{
             userId: userId
