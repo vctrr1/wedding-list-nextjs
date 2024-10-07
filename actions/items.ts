@@ -33,7 +33,7 @@ export async function updateItemAsCompleted(itemId:string, isCompleted: boolean)
                 id: itemId
             },
             data: {
-                purchased: isCompleted
+                purchased: isCompleted,
             }
 
         })
@@ -49,7 +49,7 @@ export async function updateItem(formData: FormData, category: string) {
     const entries = Array.from(formData.entries())
     const {id, name, price } = Object.fromEntries(entries) as {
         id: string
-        name: string;
+        name: string
         price: string
     };
 

@@ -1,11 +1,12 @@
 "use client"
 
 import { deleteItem, updateItemAsCompleted } from "@/actions/items";
-import { Trash2 } from "lucide-react";
+import { PlusIcon, Trash2 } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import { useTransition } from "react";
 import UpdateItem from "./update-item-component";
 import { DialogTrigger, Dialog, DialogHeader, DialogTitle, DialogContent } from "./ui/dialog";
+import { Input } from "./ui/input";
 
 interface ItemComponentProps {
     itemId: string, 
@@ -45,8 +46,8 @@ export default function ItemComponent({itemId, itemName, isCompleted}: ItemCompo
               }
             `}</style>
           </div>
-          <Dialog>
-            <DialogTrigger>
+          <Dialog> {/**digalog quando clicado no titulo do item */}
+            <DialogTrigger asChild>
               <h1 className="text-[18px]">{itemName}</h1>
             </DialogTrigger>
             <DialogContent className="rounded-md sm:w-[70%] w-[90%]">
@@ -55,6 +56,15 @@ export default function ItemComponent({itemId, itemName, isCompleted}: ItemCompo
                   <h1 className="text-base">Links</h1>
                 </DialogTitle>
               </DialogHeader>
+              <div className="flex gap-2">
+                <Input className="h-8"/>
+                <button className="">
+                  <PlusIcon/>
+                </button>
+              </div>
+              <div className="border-t-2">
+                <div>Aqui vai ficar os preview dos links</div>
+              </div>
             </DialogContent>
           </Dialog>
         </div>

@@ -17,4 +17,6 @@ TODO
 [x] - Terminar as funcionalidade de update Item
 [x] - Centralizar o toast
 [x] - Criar as divs de categoria no main e carregar os item de acordo com a categoria
-[] - Criar componente para ver o preço total dos produtos
+[x] - Criar componente para ver o preço total dos produtos
+[] - Ajustar input de updateItem para ter como valor default o nome atual do item
+[] - Terminar funcionalidade dos liks dos items
