@@ -13,6 +13,7 @@ interface Item {
   price?: number | null,
   category: string;
   purchased: boolean;
+  links: string[] | null
   // outros campos, se necessário
 }
 
@@ -62,7 +63,7 @@ export default async function Main() {
                   </h1>
                 </div>
                 {items.map((item) => (
-                  item.category === category.name ? <ItemComponent itemId={item.id} itemName={item.name} isCompleted={item.purchased} key={item.id}/> : ""
+                  item.category === category.name ? <ItemComponent itemId={item.id} itemName={item.name} purchased={item.purchased} links={item.links} key={item.id}/> : ""
                 ))}
               </div>
             ))}
