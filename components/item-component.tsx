@@ -90,13 +90,13 @@ export default function ItemComponent({itemId, itemName, purchased, links}: Item
               </form>
               <div className="border-t-2 flex flex-col w-full">
                 {Array.isArray(links) && links.length > 0 ? (
-                  <div>
+                  <div className="pt-4">
                     {links.map((item) => (
-                      <div key={item} className="flex items-center gap-3">
+                      <div key={item} className="flex items-center gap-5">
                         <div 
                           title={item} 
                           onClick={() => window.open(item, "_blank")} // Abre o link em nova aba
-                          className="text-blue-600 underline block truncate w-72" // Adiciona a classe cursor-pointer
+                          className="text-blue-600 underline block truncate w-64" // Adiciona a classe cursor-pointer
                         >
                           {item}
                         </div>
