@@ -100,7 +100,7 @@ export default function ItemComponent({itemId, itemName, purchased, links}: Item
                         >
                           {link}
                         </div>
-                        <button onClick={async () => removeLinkfromItem(itemId, link)}>
+                        <button onClick={async () => await removeLinkfromItem(itemId, link)}>
                           <Trash2 size={18} className="cursor-pointer" strokeWidth={1.5}/>
                         </button>
                       </div>
