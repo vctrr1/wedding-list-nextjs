@@ -8,6 +8,7 @@ import UpdateItem from "./update-item-component";
 import { DialogTrigger, Dialog, DialogHeader, DialogTitle, DialogContent } from "./ui/dialog";
 import { Input } from "./ui/input";
 import { toast } from "sonner";
+import { useTheme } from "next-themes";
 
 interface ItemComponentProps {
     itemId: string, 
@@ -17,6 +18,8 @@ interface ItemComponentProps {
 }
 
 export default function ItemComponent({itemId, itemName, purchased, links}: ItemComponentProps) {
+
+  const {theme} = useTheme()
   
   const formRef = useRef<HTMLFormElement>(null)
   
@@ -96,7 +99,7 @@ export default function ItemComponent({itemId, itemName, purchased, links}: Item
                         <div 
                           title={link} 
                           onClick={() => window.open(link, "_blank")} // Abre o link em nova aba
-                          className="text-blue-600 underline truncate sm:w-96 w-64" // Adiciona a classe cursor-pointer
+                          className={`text-blue-600 underline truncate sm:w-96 w-64 ${theme === "dark" ? "text-white" : "text-blue-600"}`} // Adiciona a classe cursor-pointer
                         >
                           {link}
                         </div>
