@@ -1,6 +1,6 @@
 "use client"
 
-import { addLinkToitem, deleteItem, updateItemAsCompleted } from "@/actions/items";
+import { addLinkToitem, deleteItem, removeLinkfromItem, updateItemAsCompleted } from "@/actions/items";
 import { Link, PlusIcon, Trash2 } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import React, { useTransition, useRef} from "react";
@@ -91,16 +91,18 @@ export default function ItemComponent({itemId, itemName, purchased, links}: Item
               <div className="border-t-2 flex flex-col w-full">
                 {Array.isArray(links) && links.length > 0 ? (
                   <div className="pt-4">
-                    {links.map((item) => (
-                      <div key={item} className="flex items-center gap-5 justify-between w-full">
+                    {links.map((link) => (
+                      <div key={link} className="flex items-center gap-5 justify-between w-full">
                         <div 
-                          title={item} 
-                          onClick={() => window.open(item, "_blank")} // Abre o link em nova aba
+                          title={link} 
+                          onClick={() => window.open(link, "_blank")} // Abre o link em nova aba
                           className="text-blue-600 underline truncate sm:w-96 w-64" // Adiciona a classe cursor-pointer
                         >
-                          {item}
+                          {link}
                         </div>
-                        <Trash2 size={18} className="cursor-pointer"/>
+                        <button onClick={async () => removeLinkfromItem(itemId, link)}>
+                          <Trash2 size={18} className="cursor-pointer" strokeWidth={1.5}/>
+                        </button>
                       </div>
                     ))}
                   </div>

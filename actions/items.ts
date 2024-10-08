@@ -112,6 +112,36 @@ export async function addLinkToitem(itemId: string, linkUrl: string) {
     return { success: false, message: "Item não encontrado." };
 }
 
+export async function removeLinkfromItem(itemId: string, linkToDelete: string) {
+    try {
+        const item = await db.item.findUnique({
+            where: {
+                id: itemId
+            }
+        })
+    
+        if(!item){
+            return { success: false, message: "Item não encontrado." };
+        }
+    
+        const updatedListLinks = item.links.filter((link) => link !== linkToDelete)
+    
+        await db.item.update({
+            where: {
+                id: itemId
+            },
+            data: {
+                links: updatedListLinks
+            }
+        })
+        revalidatePath("/main")
+        return { success: true, message: "Link removido com sucesso" };
+    } catch (error) {
+        console.error("Erro ao remover link:", error);
+        return { success: false, message: "Erro ao remover link" };
+    }
+}
+
 
 export async function getItems(userId: string) {
     const items = await db.item.findMany({
