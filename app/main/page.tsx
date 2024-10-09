@@ -50,8 +50,17 @@ export default async function Main() {
     <div className="flex flex-col min-h-screen">
       <Navbar/>
       <div className="flex-grow">
-        <div className="flex flex-col items-center pt-4 pb-6">
+        <div className="flex flex-col items-center pt-4 pb-4">
           <FormComponent userId={session.user.id}/>
+        </div>
+        <div className="w-full h-3 flex justify-center">
+          <div className="h-full w-[80%] flex">
+            <div className="bg-[#834629] w-1/5 h-full rounded-l-md"></div>
+            <div className="bg-[#ab6f4d] w-1/5 h-full"></div>
+            <div className="bg-[#e7dbcd] w-1/5 h-full"></div>
+            <div className="bg-[#9ca18a] w-1/5 h-full"></div>
+            <div className="bg-[#525a43] w-1/5 h-full rounded-r-md"></div>
+          </div>
         </div>
         <div className="flex flex-col items-center gap-4 mb-7">
             {categoryWithItems.map((category) => (
