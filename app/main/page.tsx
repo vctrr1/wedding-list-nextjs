@@ -53,16 +53,21 @@ export default async function Main() {
         <div className="flex flex-col items-center pt-4 pb-4">
           <FormComponent userId={session.user.id}/>
         </div>
-        <div className="w-full h-3 flex justify-center">
+        <div className=" flex flex-col gap-2 w-full h-12 justify-center items-center">
           <div className="h-full w-[80%] flex">
-            <div className="bg-[#834629] w-1/5 h-full rounded-l-md"></div>
-            <div className="bg-[#ab6f4d] w-1/5 h-full"></div>
-            <div className="bg-[#e7dbcd] w-1/5 h-full"></div>
-            <div className="bg-[#9ca18a] w-1/5 h-full"></div>
-            <div className="bg-[#525a43] w-1/5 h-full rounded-r-md"></div>
+            <div className="bg-[#834629] w-1/4 h-full rounded-l-sm"></div>
+            <div className="bg-[#835841] w-1/4 h-full"></div>
+            <div className="bg-[#ab6f4d] w-1/4 h-full"></div>
+            <div className="bg-[#9c8062] w-1/4 h-full rounded-r-sm"></div>
+          </div>
+          <div className="h-full w-[80%] flex">
+            <div className="bg-[#3a5a40] w-1/4 h-full rounded-l-sm"></div>
+            <div className="bg-[#5c7650] w-1/4 h-full"></div>
+            <div className="bg-[#a3b18a] w-1/4 h-full"></div>
+            <div className="bg-[#e7dbcd] w-1/4 h-full rounded-r-sm"></div>
           </div>
         </div>
-        <div className="flex flex-col items-center gap-4 mb-7">
+        <div className="flex flex-col items-center gap-4 mb-7 pt-3">
             {categoryWithItems.map((category) => (
               <div key={category.name} className="w-[80%] flex flex-col gap-2 "> 
                 <div className="flex items-center gap-2">
