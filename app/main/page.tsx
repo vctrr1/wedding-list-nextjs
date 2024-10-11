@@ -1,9 +1,9 @@
 import { getItems } from "@/actions/items";
 import { auth } from "@/auth";
-import ExpensesComponent from "@/components/expenses-component";
 import FormComponent from "@/components/form-component";
 import ItemComponent from "@/components/item-component";
 import Navbar from "@/components/navbar";
+import { ExpensesChart } from "@/components/pie-chart";
 import { productCategories } from "@/constants/categories";
 import { redirect } from "next/navigation";
 
@@ -26,19 +26,17 @@ export default async function Main() {
   //precisou tipar por conta de um erro na vercel
   const items: Item[] = await getItems(session?.user?.id)
   
-  const itemsWithPrice: Item[] = items.filter((item) => (
-    item.price != null && item.purchased === true //retorna os items que tem o preço e que foi comprado
-  )) 
+  //const itemsWithPrice: Item[] = items.filter((item) => (
+  //  item.price != null && item.purchased === true //retorna os items que tem o preço e que foi comprado
+  //)) 
 
-  const totalSpend = itemsWithPrice.reduce((total, item) => {
-    return total + (item.price ?? 0)
-  }, 0) // 0 valor inicial
+  //const totalSpend = itemsWithPrice.reduce((total, item) => {
+  //  return total + (item.price ?? 0)
+  //}, 0) // 0 valor inicial
   
   const itemsPurchased: Item[] = items.filter((item) => (
     item.purchased === true //retorna os items que foram marcado como comprado
   )) 
-
-  const percentage = ((itemsPurchased.length / items.length) * 100)
 
   //armazena as categorias que tem algum item cadastrado com a categoria
   const categoryWithItems = productCategories.filter((category) => 
@@ -84,7 +82,7 @@ export default async function Main() {
         </div>
       </div>
       {itemsPurchased.length > 0 && (
-        <ExpensesComponent totalSpend={totalSpend} percentage={percentage}/>
+        <ExpensesChart/>
       )}
     </div>
   );
