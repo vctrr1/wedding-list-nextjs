@@ -82,7 +82,7 @@ export default async function Main() {
 
 
   return (
-    <div className="flex flex-col min-h-screen items-center">
+    <div className="flex flex-col min-h-screen">
       <Navbar/>
       <div className="flex-grow">
         <div className="flex flex-col items-center pt-4 pb-4">
@@ -119,7 +119,7 @@ export default async function Main() {
         </div>
       </div>
       {itemsPurchased.length > 0 && (
-        <div className="w-[80%]">
+        <div className="w-full flex justify-center">
           <ExpensesChart data={chartData} config={chartConfig} />
         </div>
       )}

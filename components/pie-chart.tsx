@@ -27,7 +27,7 @@ export function ExpensesChart({ data, config }: ChartProps) {
   }, [data]) // Adicionando 'data' como dependência
 
   return (
-    <Card className="flex flex-col">
+    <Card className="flex flex-col w-[80%]">
       <CardHeader className="items-center pb-0">
         <CardDescription className="text-base">Gráfico das despesas</CardDescription>
       </CardHeader>
