@@ -17,6 +17,13 @@ interface Item {
   // outros campos, se necessário
 }
 
+interface ChartConfig {
+  [key: string]: {
+    label: string;
+    color: string;
+  };
+}
+
 export default async function Main() {
   const session = await auth()
 
@@ -26,14 +33,44 @@ export default async function Main() {
   //precisou tipar por conta de um erro na vercel
   const items: Item[] = await getItems(session?.user?.id)
   
-  //const itemsWithPrice: Item[] = items.filter((item) => (
-  //  item.price != null && item.purchased === true //retorna os items que tem o preço e que foi comprado
-  //)) 
+  const itemsWithPrice: Item[] = items.filter((item) => (
+    item.price != null && item.purchased === true //retorna os items que tem o preço e que foi comprado
+  )) 
 
-  //const totalSpend = itemsWithPrice.reduce((total, item) => {
-  //  return total + (item.price ?? 0)
-  //}, 0) // 0 valor inicial
-  
+  // Agrupa os itens por categoria e calcula o total gasto em cada categoria
+  const totalPerCategory = itemsWithPrice.reduce((acc, item) => {
+    const category = acc.find(cat => cat.category === item.category);
+
+    if (category) {
+      category.total += item.price ?? 0;
+    } else {
+      acc.push({ category: item.category, total: item.price ?? 0 });
+    }
+
+    return acc;
+  }, [] as { category: string, total: number }[]);
+
+  // Mapeia os dados para o formato necessário para o gráfico
+  const chartData = totalPerCategory.map(category => ({
+    browser: category.category,
+    visitors: category.total,
+    fill: productCategories.find(cat => cat.name === category.category)?.color || "var(--default-color)"
+  }));
+
+  const chartConfig: ChartConfig = {
+    visitors: {
+      label: "Total gasto",
+      color: ""
+    },
+    ...productCategories.reduce((acc, category) => {
+      acc[category.name] = {
+        label: category.name,
+        color: category.color
+      };
+      return acc;
+    }, {} as ChartConfig)
+  };
+
   const itemsPurchased: Item[] = items.filter((item) => (
     item.purchased === true //retorna os items que foram marcado como comprado
   )) 
@@ -45,7 +82,7 @@ export default async function Main() {
 
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen items-center">
       <Navbar/>
       <div className="flex-grow">
         <div className="flex flex-col items-center pt-4 pb-4">
@@ -82,7 +119,9 @@ export default async function Main() {
         </div>
       </div>
       {itemsPurchased.length > 0 && (
-        <ExpensesChart/>
+        <div className="w-[80%]">
+          <ExpensesChart data={chartData} config={chartConfig} />
+        </div>
       )}
     </div>
   );
