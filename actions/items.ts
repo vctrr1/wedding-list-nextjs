@@ -17,11 +17,15 @@ export async function createItem(productName: string,productPrice: number | null
 }
 
 export async function deleteItem(itemId: string){
-    await db.item.delete({
-        where: {
-            id: itemId
-        }
-    })
+    try {
+        await db.item.delete({
+            where: {
+                id: itemId
+            }
+        })
+    } catch (error) {
+        console.log(error)
+    }
 
     revalidatePath("/main")
 }
@@ -147,6 +151,9 @@ export async function getItems(userId: string) {
     const items = await db.item.findMany({
         where:{
             userId: userId
+        },
+        orderBy: {
+            name: 'asc'
         }
     })
     return items

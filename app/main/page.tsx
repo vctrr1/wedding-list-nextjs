@@ -35,7 +35,9 @@ export default async function Main() {
   
   const itemsWithPrice: Item[] = items.filter((item) => (
     item.price != null && item.purchased === true //retorna os items que tem o preço e que foi comprado
-  )) 
+  ))
+  
+  const percentage = ((itemsWithPrice.length / items.length) * 100)
 
   // Agrupa os itens por categoria e calcula o total gasto em cada categoria
   const totalPerCategory = itemsWithPrice.reduce((acc, item) => {
@@ -71,15 +73,10 @@ export default async function Main() {
     }, {} as ChartConfig)
   };
 
-  const itemsPurchased: Item[] = items.filter((item) => (
-    item.purchased === true //retorna os items que foram marcado como comprado
-  )) 
-
   //armazena as categorias que tem algum item cadastrado com a categoria
   const categoryWithItems = productCategories.filter((category) => 
     items.some((item: Item) => item.category === category.name)
   )
-
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -118,9 +115,9 @@ export default async function Main() {
             ))}
         </div>
       </div>
-      {itemsPurchased.length > 0 && (
+      {itemsWithPrice.length > 0 && (
         <div className="w-full flex justify-center mb-7">
-          <ExpensesChart data={chartData} config={chartConfig} />
+          <ExpensesChart data={chartData} config={chartConfig} percentage={percentage}/>
         </div>
       )}
     </div>

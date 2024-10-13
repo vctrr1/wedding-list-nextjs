@@ -7,6 +7,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
 } from "@/components/ui/card"
 import {
@@ -19,9 +20,10 @@ import {
 interface ChartProps {
   data: { browser: string; visitors: number; fill: string }[];
   config: ChartConfig;
+  percentage: number
 }
 
-export function ExpensesChart({ data, config }: ChartProps) {
+export function ExpensesChart({ data, config, percentage }: ChartProps) {
   const totalVisitors = React.useMemo(() => {
     return data.reduce((acc, curr) => acc + curr.visitors, 0) // Usando o 'data' passado via props
   }, [data]) // Adicionando 'data' como dependência
@@ -81,6 +83,9 @@ export function ExpensesChart({ data, config }: ChartProps) {
           </PieChart>
         </ChartContainer>
       </CardContent>
+      <CardFooter className="justify-center">
+        <CardDescription className="text-base">Total: {percentage}%</CardDescription>
+      </CardFooter>
     </Card>
   )
 }
