@@ -69,7 +69,7 @@ export default function UpdateItem({ itemId }: UpdateItemsProps) {
                     <div className="flex items-center space-x-2 w-full justify-between">
                         <label className="text-lg">Preço: </label>
                         <Input
-                            type="number"
+                            type="text"
                             name="price"
                             id="price"
                             className="w-[80%]"

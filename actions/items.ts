@@ -54,7 +54,7 @@ export async function updateItem(formData: FormData, category: string) {
     };
 
     // Converter o preço para número
-    const parcedPrice = price ? parseFloat(price) : null
+    const parsedPrice = price ? parseFloat(price.replace(',', '.')) : null;
 
     try {
         await db.item.update({
@@ -64,7 +64,7 @@ export async function updateItem(formData: FormData, category: string) {
             data: {
                 name: name,
                 category: category,
-                price: parcedPrice
+                price: parsedPrice,
             }
 
         })
