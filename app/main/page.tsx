@@ -119,7 +119,7 @@ export default async function Main() {
         </div>
       </div>
       {itemsPurchased.length > 0 && (
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center mb-7">
           <ExpensesChart data={chartData} config={chartConfig} />
         </div>
       )}
