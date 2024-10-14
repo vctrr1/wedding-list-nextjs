@@ -84,7 +84,7 @@ export function ExpensesChart({ data, config, percentage }: ChartProps) {
         </ChartContainer>
       </CardContent>
       <CardFooter className="justify-center">
-        <CardDescription className="text-base">Total: {percentage.toFixed(2)}%</CardDescription>
+        <CardDescription className="text-base">Total: {percentage.toFixed(1)}%</CardDescription>
       </CardFooter>
     </Card>
   )

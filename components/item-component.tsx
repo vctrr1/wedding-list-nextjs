@@ -5,10 +5,11 @@ import { Link, PlusIcon, Trash2 } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import React, { useTransition, useRef} from "react";
 import UpdateItem from "./update-item-component";
-import { DialogTrigger, Dialog, DialogHeader, DialogTitle, DialogContent } from "./ui/dialog";
+import { DialogTrigger, Dialog, DialogHeader, DialogTitle, DialogContent, DialogClose } from "./ui/dialog";
 import { Input } from "./ui/input";
 import { toast } from "sonner";
 import { useTheme } from "next-themes";
+import { Button } from "./ui/button";
 
 interface ItemComponentProps {
     itemId: string, 
@@ -117,10 +118,33 @@ export default function ItemComponent({itemId, itemName, purchased, links}: Item
           </Dialog>
         </div>
         <div className="flex items-center gap-3 p-2 pr-3">
-            <UpdateItem itemId={itemId}/>
-          <button onClick={async () => await deleteItem(itemId)}>
-            <Trash2 className="text-red-600 " strokeWidth={1.25}/>
-          </button>
+          <UpdateItem itemId={itemId}/>
+          <Dialog>
+            <DialogTrigger asChild>
+              <button>
+                <Trash2 className="text-red-600 " strokeWidth={1.25}/>
+              </button>
+            </DialogTrigger>
+            <DialogContent className="rounded-md sm:w-[70%] w-[80%]">
+                <DialogHeader className="items-center flex">
+                  <DialogTitle>
+                    <h1 className="text-base">Deseja excluir?</h1>
+                  </DialogTitle>
+                </DialogHeader>
+                <div className="flex justify-evenly">
+                  <DialogClose>
+                    <Button size="sm" variant="outline">
+                      Cancelar
+                    </Button>
+                  </DialogClose>
+                  <DialogClose>
+                    <Button size="sm" variant="destructive" onClick={async () => await deleteItem(itemId)}>
+                      Excluir
+                    </Button>
+                  </DialogClose>
+                </div>
+            </DialogContent>
+          </Dialog>
         </div>
       </CardContent>
     </Card>
