@@ -75,7 +75,7 @@ export default function UpdateItem({ itemId }: UpdateItemsProps) {
                             className="w-[80%]"
                         />
                     </div>
-                    <div className="flex items-center space-x-2 w-full justify-between">
+                    <div className="flex items-center space-x-2 w-full justify-between pb-2">
                         <label className="text-lg">Categoria: </label>
                         <SelectCategoryItem onSelectCategory={handleSelectCategory} />
                     </div>
