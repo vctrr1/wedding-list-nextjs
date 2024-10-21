@@ -29,7 +29,7 @@ export function ExpensesChart({ data, config, percentage }: ChartProps) {
   }, [data]) // Adicionando 'data' como dependência
 
   return (
-    <Card className="flex flex-col rounded-none">
+    <Card className="flex flex-col rounded-none border-t">
       <CardHeader className="items-center pb-0">
         <CardDescription className="text-base">Gráfico das despesas</CardDescription>
       </CardHeader>
