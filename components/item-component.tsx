@@ -43,7 +43,7 @@ export default function ItemComponent({itemId, itemName, purchased, links}: Item
   }
 
   return (
-  <Card>
+  <Card className="border">
       {/* se o item for isCompleted=true vai deixar o conteudo do card com o pacidade 50%*/}
       <CardContent className={`${purchased ? "opacity-50" : ""} flex items-center gap-3 p-0 justify-between`}>
         <div className="flex items-center gap-3 pl-4">
