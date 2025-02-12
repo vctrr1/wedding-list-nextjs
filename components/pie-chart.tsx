@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Label, Pie, PieChart } from "recharts"
+import * as React from "react";
+import { Label, Pie, PieChart } from "recharts";
 
 import {
   Card,
@@ -9,29 +9,37 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart";
 
 interface ChartProps {
   data: { browser: string; visitors: number; fill: string }[];
   config: ChartConfig;
-  percentage: number
+  percentage: number;
+  quantItems: number;
 }
 
-export function ExpensesChart({ data, config, percentage }: ChartProps) {
+export function ExpensesChart({
+  data,
+  config,
+  percentage,
+  quantItems,
+}: ChartProps) {
   const totalVisitors = React.useMemo(() => {
-    return data.reduce((acc, curr) => acc + curr.visitors, 0) // Usando o 'data' passado via props
-  }, [data]) // Adicionando 'data' como dependência
+    return data.reduce((acc, curr) => acc + curr.visitors, 0); // Usando o 'data' passado via props
+  }, [data]); // Adicionando 'data' como dependência
 
   return (
     <Card className="flex flex-col rounded-none border-t">
       <CardHeader className="items-center pb-0">
-        <CardDescription className="text-base">Gráfico das despesas</CardDescription>
+        <CardDescription className="text-base">
+          Gráfico das despesas
+        </CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
@@ -75,7 +83,7 @@ export function ExpensesChart({ data, config, percentage }: ChartProps) {
                           Total gasto
                         </tspan>
                       </text>
-                    )
+                    );
                   }
                 }}
               />
@@ -83,10 +91,14 @@ export function ExpensesChart({ data, config, percentage }: ChartProps) {
           </PieChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="justify-center">
-        <CardDescription className="text-base">Total: {percentage.toFixed(1)}%</CardDescription>
+      <CardFooter className="justify-center flex flex-col">
+        <CardDescription className="text-base">
+          Items: {quantItems}
+        </CardDescription>
+        <CardDescription className="text-base">
+          Total: {percentage.toFixed(1)}%
+        </CardDescription>
       </CardFooter>
     </Card>
-  )
+  );
 }
-
