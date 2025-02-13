@@ -21,14 +21,14 @@ interface ChartProps {
   data: { browser: string; visitors: number; fill: string }[];
   config: ChartConfig;
   percentage: number;
-  quantItems: number;
+  numberOfItems: number;
 }
 
 export function ExpensesChart({
   data,
   config,
   percentage,
-  quantItems,
+  numberOfItems,
 }: ChartProps) {
   const totalVisitors = React.useMemo(() => {
     return data.reduce((acc, curr) => acc + curr.visitors, 0); // Usando o 'data' passado via props
@@ -93,7 +93,7 @@ export function ExpensesChart({
       </CardContent>
       <CardFooter className="justify-center flex flex-col">
         <CardDescription className="text-base">
-          Items: {quantItems}
+          Itens: {numberOfItems}
         </CardDescription>
         <CardDescription className="text-base">
           Total: {percentage.toFixed(1)}%

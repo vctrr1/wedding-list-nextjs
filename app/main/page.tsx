@@ -34,8 +34,7 @@ export default async function Main() {
   const items: Item[] = await getItems(session?.user?.id);
 
   const itemsWithPrice: Item[] = items.filter(
-    (item) =>
-      item.price != null && item.purchased === true //retorna os items que tem o preço e que foi comprado
+    (item) => item.price != null && item.purchased === true //retorna os items que tem o preço e que foi comprado
   );
 
   const percentage = (itemsWithPrice.length / items.length) * 100;
@@ -135,7 +134,7 @@ export default async function Main() {
             data={chartData}
             config={chartConfig}
             percentage={percentage}
-            quantItems={items.length}
+            numberOfItems={items.length}
           />
         </div>
       )}
