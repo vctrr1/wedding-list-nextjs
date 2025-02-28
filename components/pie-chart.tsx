@@ -22,6 +22,7 @@ interface ChartProps {
   config: ChartConfig;
   percentage: number;
   numberOfItems: number;
+  itemsPutchased: number;
 }
 
 export function ExpensesChart({
@@ -29,6 +30,7 @@ export function ExpensesChart({
   config,
   percentage,
   numberOfItems,
+  itemsPutchased,
 }: ChartProps) {
   const totalVisitors = React.useMemo(() => {
     return data.reduce((acc, curr) => acc + curr.visitors, 0); // Usando o 'data' passado via props
@@ -49,7 +51,7 @@ export function ExpensesChart({
           <PieChart>
             <ChartTooltip
               cursor={false}
-              content={<ChartTooltipContent hideLabel />}
+              content={<ChartTooltipContent hideLabel indicator="dot" />}
             />
             <Pie
               data={data} // Usando o 'data' passado via props
@@ -94,6 +96,9 @@ export function ExpensesChart({
       <CardFooter className="justify-center flex flex-col">
         <CardDescription className="text-base">
           Itens: {numberOfItems}
+        </CardDescription>
+        <CardDescription className="text-base">
+          Adquiridos: {itemsPutchased}
         </CardDescription>
         <CardDescription className="text-base">
           Total: {percentage.toFixed(1)}%

@@ -37,6 +37,8 @@ export default async function Main() {
     (item) => item.price != null && item.purchased === true //retorna os items que tem o preço e que foi comprado
   );
 
+  const itemsMarkasPurchased = items.filter((item) => item.purchased === true); //retorna os items que foram comprados
+
   const percentage = (itemsWithPrice.length / items.length) * 100;
 
   // Agrupa os itens por categoria e calcula o total gasto em cada categoria
@@ -135,6 +137,7 @@ export default async function Main() {
             config={chartConfig}
             percentage={percentage}
             numberOfItems={items.length}
+            itemsPutchased={itemsMarkasPurchased.length}
           />
         </div>
       )}
