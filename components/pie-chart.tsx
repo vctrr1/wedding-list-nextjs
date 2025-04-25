@@ -75,7 +75,7 @@ export function ExpensesChart({
                           y={viewBox.cy}
                           className="fill-foreground text-2xl font-bold"
                         >
-                          {totalVisitors.toLocaleString()}
+                          {totalVisitors.toLocaleString("pt-BR")}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
