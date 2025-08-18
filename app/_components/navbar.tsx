@@ -3,7 +3,7 @@
 import { LogOut } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 import { Button } from "./ui/button";
-import { logout } from "@/app/_actions/logout";
+import { signOut } from "next-auth/react";
 
 export default function Navbar() {
   return (
@@ -12,7 +12,11 @@ export default function Navbar() {
       <h1 className="text-2xl pl-3 sm:pl-0">Lista de Enxoval</h1>
       <div className="gap-2 flex">
         <ThemeToggle />
-        <Button size="icon" variant="ghost" onClick={() => logout()}>
+        <Button
+          size="icon"
+          variant="ghost"
+          onClick={() => signOut({ redirectTo: "/" })}
+        >
           <LogOut className="h-[1.2rem] w-[1.2rem]" />
         </Button>
       </div>
