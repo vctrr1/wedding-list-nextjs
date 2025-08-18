@@ -163,7 +163,7 @@ export default function ItemComponent({
               </DialogContent>
             </Dialog>
           </div>
-          <div className="flex items-center gap-3 p-2 pr-3">
+          <div className="flex items-center gap-3 p-2 pl-0 pr-3">
             <UpdateItem itemId={itemId} />
             <Dialog>
               <DialogTrigger asChild>
