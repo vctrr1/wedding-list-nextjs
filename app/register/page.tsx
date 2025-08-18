@@ -1,8 +1,8 @@
 "use client";
 
-import register from "@/actions/register";
-import LoginButton from "@/components/login-button";
-import { ThemeToggle } from "@/components/theme-toggle";
+import register from "@/app/_actions/register";
+import LoginButton from "@/app/_components/login-button";
+import { ThemeToggle } from "@/app/_components/theme-toggle";
 import {
   Card,
   CardContent,
@@ -10,9 +10,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+} from "@/app/_components/ui/card";
+import { Input } from "@/app/_components/ui/input";
+import { Label } from "@/app/_components/ui/label";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";

@@ -173,17 +173,17 @@ export default function ItemComponent({
               </DialogTrigger>
               <DialogContent className="rounded-md sm:w-[70%] w-[80%]">
                 <DialogHeader className="items-center flex">
-                  <DialogTitle>
-                    <h1 className="text-base">Deseja excluir {itemName} ?</h1>
+                  <DialogTitle className="text-base pt-3">
+                    Deseja excluir {itemName} ?
                   </DialogTitle>
                 </DialogHeader>
                 <div className="flex justify-evenly">
-                  <DialogClose>
+                  <DialogClose asChild>
                     <Button size="sm" variant="outline">
                       Cancelar
                     </Button>
                   </DialogClose>
-                  <DialogClose>
+                  <DialogClose asChild>
                     <Button
                       size="sm"
                       variant="destructive"

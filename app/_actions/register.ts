@@ -1,7 +1,7 @@
 "use server";
 
-import { db } from "@/lib/db";
-import { saltAndHashPassword } from "@/utils/crip-password";
+import { db } from "@/app/_lib/db";
+import { saltAndHashPassword } from "@/app/_utils/crip-password";
 
 export default async function register(formData: FormData) {
   /* Tambem pode pegar os dados dessa forma

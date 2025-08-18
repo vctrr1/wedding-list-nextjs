@@ -9,13 +9,13 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
-} from "@/components/ui/card";
+} from "@/app/_components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from "@/app/_components/ui/chart";
 
 interface ChartProps {
   data: { browser: string; visitors: number; fill: string }[];

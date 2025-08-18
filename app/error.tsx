@@ -1,7 +1,6 @@
-'use client';
+"use client";
 
-import ErrorCard from "@/components/error-card";
-
+import ErrorCard from "@/app/_components/error-card";
 
 export default function RegisterError({
   error,

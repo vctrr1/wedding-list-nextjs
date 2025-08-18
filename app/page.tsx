@@ -1,15 +1,15 @@
-import login from "@/actions/login";
-import LoginButton from "@/components/login-button";
-import { ThemeToggle } from "@/components/theme-toggle";
+import login from "@/app/_actions/login";
+import LoginButton from "@/app/_components/login-button";
+import { ThemeToggle } from "@/app/_components/theme-toggle";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+} from "@/app/_components/ui/card";
+import { Input } from "@/app/_components/ui/input";
+import { Label } from "@/app/_components/ui/label";
 import Link from "next/link";
 
 export default function Home() {

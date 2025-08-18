@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inconsolata } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/app/_components/theme-provider";
 import { SessionProvider } from "next-auth/react";
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@/app/_components/ui/sonner";
 
 const inconsolata = Inconsolata({ subsets: ["latin"], weight: ["300"] });
 

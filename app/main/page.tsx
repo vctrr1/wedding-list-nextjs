@@ -1,10 +1,10 @@
-import { getItems } from "@/actions/items";
+import { getItems } from "@/app/_actions/items";
 import { auth } from "@/auth";
-import FormComponent from "@/components/form-component";
-import ItemComponent from "@/components/item-component";
-import Navbar from "@/components/navbar";
-import { ExpensesChart } from "@/components/pie-chart";
-import { productCategories } from "@/constants/categories";
+import FormComponent from "@/app/_components/form-component";
+import ItemComponent from "@/app/_components/item-component";
+import Navbar from "@/app/_components/navbar";
+import { ExpensesChart } from "@/app/_components/pie-chart";
+import { productCategories } from "@/app/_constants/categories";
 import { redirect } from "next/navigation";
 
 interface Item {
