@@ -1,5 +1,5 @@
 import { getItems } from "@/app/_actions/items";
-import { auth } from "@/auth";
+import { auth } from "@/app/_lib/auth";
 import FormComponent from "@/app/_components/form-component";
 import ItemComponent from "@/app/_components/item-component";
 import Navbar from "@/app/_components/navbar";
