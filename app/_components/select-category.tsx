@@ -10,13 +10,15 @@ import {
 
 interface SelectCategoryItemProps {
   onSelectCategory: (value: string) => void;
+  value: string;
 }
 
 export default function SelectCategoryItem({
   onSelectCategory,
+  value,
 }: SelectCategoryItemProps) {
   return (
-    <Select onValueChange={onSelectCategory}>
+    <Select onValueChange={onSelectCategory} value={value}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Escolher categoria" />
       </SelectTrigger>

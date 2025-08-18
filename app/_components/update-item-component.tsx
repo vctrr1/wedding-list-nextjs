@@ -17,11 +17,19 @@ import { updateItem } from "@/app/_actions/items";
 
 interface UpdateItemsProps {
   itemId: string;
+  itemName: string;
+  itemPrice?: number | null;
+  itemCategory: string;
 }
 
-export default function UpdateItem({ itemId }: UpdateItemsProps) {
-  const [name, setName] = useState("");
-  const [category, setCategory] = useState("");
+export default function UpdateItem({
+  itemId,
+  itemName,
+  itemPrice,
+  itemCategory,
+}: UpdateItemsProps) {
+  const [name, setName] = useState(itemName);
+  const [category, setCategory] = useState(itemCategory);
   const [isFormValid, setIsFormValid] = useState(false);
 
   const handleSelectCategory = (value: string) => {
@@ -79,11 +87,20 @@ export default function UpdateItem({ itemId }: UpdateItemsProps) {
           </div>
           <div className="flex items-center space-x-2 w-full justify-between">
             <label className="text-lg">Preço: </label>
-            <Input type="text" name="price" id="price" className="w-[80%]" />
+            <Input
+              type="text"
+              name="price"
+              id="price"
+              defaultValue={itemPrice?.toLocaleString("pt-BR") ?? ""}
+              className="w-[80%]"
+            />
           </div>
           <div className="flex items-center space-x-2 w-full justify-between pb-2">
             <label className="text-lg">Categoria: </label>
-            <SelectCategoryItem onSelectCategory={handleSelectCategory} />
+            <SelectCategoryItem
+              onSelectCategory={handleSelectCategory}
+              value={itemCategory}
+            />
           </div>
           <DialogClose asChild>
             <Button

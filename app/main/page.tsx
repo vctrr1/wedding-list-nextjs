@@ -118,6 +118,8 @@ export default async function Main() {
                   <ItemComponent
                     itemId={item.id}
                     itemName={item.name}
+                    itemPrice={item.price}
+                    itemCategory={item.category}
                     purchased={item.purchased}
                     links={item.links}
                     key={item.id}

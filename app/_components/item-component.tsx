@@ -26,6 +26,8 @@ import { Button } from "./ui/button";
 interface ItemComponentProps {
   itemId: string;
   itemName: string;
+  itemPrice?: number | null;
+  itemCategory: string;
   purchased: boolean;
   links: string[] | null;
 }
@@ -33,6 +35,8 @@ interface ItemComponentProps {
 export default function ItemComponent({
   itemId,
   itemName,
+  itemPrice,
+  itemCategory,
   purchased,
   links,
 }: ItemComponentProps) {
@@ -164,7 +168,12 @@ export default function ItemComponent({
             </Dialog>
           </div>
           <div className="flex items-center gap-3 p-2 pl-0 pr-3">
-            <UpdateItem itemId={itemId} />
+            <UpdateItem
+              itemId={itemId}
+              itemName={itemName}
+              itemPrice={itemPrice}
+              itemCategory={itemCategory}
+            />
             <Dialog>
               <DialogTrigger asChild>
                 <button>
