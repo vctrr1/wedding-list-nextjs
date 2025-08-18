@@ -5,7 +5,7 @@ import {
   deleteItem,
   removeLinkfromItem,
   updateItemAsCompleted,
-} from "@/actions/items";
+} from "@/app/_actions/items";
 import { Link, PlusIcon, Trash2 } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import React, { useTransition, useRef } from "react";
@@ -100,15 +100,15 @@ export default function ItemComponent({
                 <h1 className="text-[18px]">{itemName}</h1>
                 <div>
                   {Array.isArray(links) && links?.length > 0 && (
-                    <Link size={11} className="text-blue-500" />
+                    <Link size={12} className="text-blue-500" />
                   )}
                 </div>
               </div>
             </DialogTrigger>
             <DialogContent className="rounded-md sm:w-[70%] w-[90%]">
               <DialogHeader>
-                <DialogTitle>
-                  <h1 className="text-base">Links</h1>
+                <DialogTitle className="text-base text-center">
+                  Links
                 </DialogTitle>
               </DialogHeader>
               <form
