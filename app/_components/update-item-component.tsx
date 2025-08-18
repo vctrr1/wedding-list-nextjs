@@ -74,6 +74,10 @@ export default function UpdateItem({
           onSubmit={handleSubmit}
           className="flex flex-col items-center space-y-2 w-full"
         >
+          <span //precisei criar um span invisivel, para o foco não ir para o primeiro input, no celular abre o teclado se o input estiver em foco.
+            tabIndex={0}
+            style={{ position: "absolute", opacity: 0, height: 0, width: 0 }}
+          />
           <div className="flex items-center space-x-2 w-full justify-between">
             <label className="text-lg">Nome: </label>
             <Input
