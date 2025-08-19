@@ -31,6 +31,7 @@ export async function deleteItem(itemId: string) {
     revalidatePath("/main");
     return { success: true, message: "Item deletado com sucesso" };
   } catch (error) {
+    console.log(error);
     return { success: false, message: "Erro ao deletar item" };
   }
 }
@@ -147,7 +148,7 @@ export async function removeLinkfromItem(itemId: string, linkToDelete: string) {
     revalidatePath("/main");
     return { success: true, message: "Link removido com sucesso" };
   } catch (error) {
-    console.error("Erro ao remover link:", error);
+    console.log(error);
     return { success: false, message: "Erro ao remover link" };
   }
 }
