@@ -55,7 +55,7 @@ export default function ItemComponent({
       } else {
         toast.error(result.message);
       }
-    } catch (_) {
+    } catch {
       toast.error("Erro inesperado ao remover item");
     }
   };
@@ -68,7 +68,7 @@ export default function ItemComponent({
       } else {
         toast.error(result.message);
       }
-    } catch (_) {
+    } catch {
       toast.error("Erro inesperado ao remover link");
     }
   };
