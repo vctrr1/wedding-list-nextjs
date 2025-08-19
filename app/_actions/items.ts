@@ -28,11 +28,11 @@ export async function deleteItem(itemId: string) {
         id: itemId,
       },
     });
+    revalidatePath("/main");
+    return { success: true, message: "Item deletado com sucesso" };
   } catch (error) {
-    console.log(error);
+    return { success: false, message: "Erro ao deletar item" };
   }
-
-  revalidatePath("/main");
 }
 
 export async function updateItemAsCompleted(

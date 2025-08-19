@@ -47,7 +47,33 @@ export default function ItemComponent({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isPending, startTransition] = useTransition();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleDeleteItem = async (itemId: string) => {
+    try {
+      const result = await deleteItem(itemId);
+      if (result.success) {
+        toast.success(result.message);
+      } else {
+        toast.error(result.message);
+      }
+    } catch (error) {
+      toast.error("Erro inesperado ao remover item");
+    }
+  };
+
+  const handleDeleteItemLink = async (itemId: string, link: string) => {
+    try {
+      const result = await removeLinkfromItem(itemId, link);
+      if (result.success) {
+        toast.success(result.message);
+      } else {
+        toast.error(result.message);
+      }
+    } catch (error) {
+      toast.error("Erro inesperado ao remover link");
+    }
+  };
+
+  const handleAddLink = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const link = formData.get("link") as string;
@@ -130,7 +156,7 @@ export default function ItemComponent({
                 )}
                 <form
                   ref={formRef}
-                  onSubmit={handleSubmit}
+                  onSubmit={handleAddLink}
                   className="flex gap-2"
                 >
                   <span //precisei criar um span invisivel, para o foco não ir para o primeiro input, no celular abre o teclado se o input estiver em foco.
@@ -159,27 +185,25 @@ export default function ItemComponent({
                       {links.map((link) => (
                         <div
                           key={link}
-                          className="flex items-center gap-5 justify-between w-full border-b pb-2"
+                          className="flex items-center justify-between w-full border-b pb-2"
                         >
                           <div
                             title={link}
                             onClick={() => window.open(link, "_blank")} // Abre o link em nova aba
-                            className={`text-blue-600 truncate sm:w-96 w-64 flex items-center gap-1 ${
+                            className={`sm:w-96 w-64 flex items-center gap-1 cursor-pointer ${
                               theme === "dark"
                                 ? "text-slate-200"
                                 : "text-blue-500"
-                            }`} // Adiciona a classe cursor-pointer
+                            }`}
                           >
                             <Link2
-                              size={12}
-                              className="mt-[3px] text-blue-500"
+                              size={13}
+                              className="mt-[3px] text-blue-500 flex-shrink-0"
                             />
-                            <span>{link}</span>
+                            <span className="truncate">{link}</span>
                           </div>
                           <button
-                            onClick={async () =>
-                              await removeLinkfromItem(itemId, link)
-                            }
+                            onClick={() => handleDeleteItemLink(itemId, link)}
                           >
                             <Trash2
                               size={18}
@@ -228,7 +252,7 @@ export default function ItemComponent({
                     <Button
                       size="sm"
                       variant="destructive"
-                      onClick={async () => await deleteItem(itemId)}
+                      onClick={() => handleDeleteItem(itemId)}
                     >
                       Excluir
                     </Button>
