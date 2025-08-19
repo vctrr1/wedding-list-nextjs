@@ -6,7 +6,7 @@ import {
   removeLinkfromItem,
   updateItemAsCompleted,
 } from "@/app/_actions/items";
-import { Link, Link2, PlusIcon, Trash2 } from "lucide-react";
+import { Gift, Link, Link2, PlusIcon, Trash2 } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import React, { useTransition, useRef } from "react";
 import UpdateItem from "./update-item-component";
@@ -135,8 +135,9 @@ export default function ItemComponent({
             <Dialog>
               {/**digalog quando clicado no titulo do item */}
               <DialogTrigger asChild>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1">
                   <h1 className="text-[18px]">{itemName}</h1>
+                  <img src="/gift.svg" alt="Presente" className="w-4 h-4" />
                 </div>
               </DialogTrigger>
               <DialogContent className="rounded-md sm:w-[70%] w-[90%]">

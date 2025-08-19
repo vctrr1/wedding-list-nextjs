@@ -10,6 +10,9 @@ const inconsolata = Inconsolata({ subsets: ["latin"], weight: ["300"] });
 export const metadata: Metadata = {
   title: "Wedding List",
   description: "Created by VCTRR",
+  icons: {
+    icon: "/site-logo.svg", // caminho relativo à pasta public
+  },
 };
 
 export default async function RootLayout({
@@ -18,7 +21,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning={true}>
+    <html lang="pt-BR" suppressHydrationWarning={true}>
+      <head>
+        <link rel="icon" type="image/svg+xml" href="/site-logo.svg" />
+      </head>
       <body className={inconsolata.className}>
         <SessionProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
