@@ -6,7 +6,7 @@ import {
   removeLinkfromItem,
   updateItemAsCompleted,
 } from "@/app/_actions/items";
-import { Link, PlusIcon, Trash2 } from "lucide-react";
+import { Link, Link2, PlusIcon, Trash2 } from "lucide-react";
 import { Card, CardContent } from "./ui/card";
 import React, { useTransition, useRef } from "react";
 import UpdateItem from "./update-item-component";
@@ -68,7 +68,6 @@ export default function ItemComponent({
           size={12}
           className="text-muted-foreground absolute -top-1 -right-1"
         />
-        //<span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-primary" />
       )}
 
       <Card className="border">
@@ -106,7 +105,6 @@ export default function ItemComponent({
               `}</style>
             </div>
             <Dialog>
-              {" "}
               {/**digalog quando clicado no titulo do item */}
               <DialogTrigger asChild>
                 <div className="flex items-center gap-2">
@@ -115,36 +113,68 @@ export default function ItemComponent({
               </DialogTrigger>
               <DialogContent className="rounded-md sm:w-[70%] w-[90%]">
                 <DialogHeader>
-                  <DialogTitle className="text-base text-center">
-                    Links
+                  <DialogTitle className="text-lg text-center font-normal">
+                    {itemName}
                   </DialogTitle>
                 </DialogHeader>
+                {itemPrice && ( //Se tiver preço exibe abaixo do titulo
+                  <div className="flex gap-1 text-lg justify-center text-muted-foreground">
+                    <p className="">Valor Pago: </p>
+                    <p>
+                      {itemPrice.toLocaleString("pt-BR", {
+                        style: "currency",
+                        currency: "BRL",
+                      })}
+                    </p>
+                  </div>
+                )}
                 <form
                   ref={formRef}
                   onSubmit={handleSubmit}
-                  className="flex gap-2 pb-2"
+                  className="flex gap-2"
                 >
-                  <Input className="h-8" id="link" name="link" />
-                  <button type="submit" className="">
+                  <span //precisei criar um span invisivel, para o foco não ir para o primeiro input, no celular abre o teclado se o input estiver em foco.
+                    tabIndex={0}
+                    style={{
+                      position: "absolute",
+                      opacity: 0,
+                      height: 0,
+                      width: 0,
+                    }}
+                  />
+                  <Input
+                    className="h-[38px]"
+                    id="link"
+                    name="link"
+                    placeholder="Adicionar Link"
+                  />
+                  <Button type="submit" variant="outline" className="p-2">
                     <PlusIcon />
-                  </button>
+                  </Button>
                 </form>
-                <div className="border-t-2 flex flex-col w-full">
+                <div className=" flex flex-col w-full pb-3">
                   {Array.isArray(links) && links.length > 0 ? (
-                    <div className="pt-4">
+                    <div className="space-y-2">
+                      <p className="text-center">Links</p>
                       {links.map((link) => (
                         <div
                           key={link}
-                          className="flex items-center gap-5 justify-between w-full"
+                          className="flex items-center gap-5 justify-between w-full border-b pb-2"
                         >
                           <div
                             title={link}
                             onClick={() => window.open(link, "_blank")} // Abre o link em nova aba
-                            className={`text-blue-600 underline truncate sm:w-96 w-64 ${
-                              theme === "dark" ? "text-white" : "text-blue-600"
+                            className={`text-blue-600 truncate sm:w-96 w-64 flex items-center gap-1 ${
+                              theme === "dark"
+                                ? "text-slate-200"
+                                : "text-blue-500"
                             }`} // Adiciona a classe cursor-pointer
                           >
-                            {link}
+                            <Link2
+                              size={12}
+                              className="mt-[3px] text-blue-500"
+                            />
+                            <span>{link}</span>
                           </div>
                           <button
                             onClick={async () =>
@@ -153,7 +183,7 @@ export default function ItemComponent({
                           >
                             <Trash2
                               size={18}
-                              className="cursor-pointer"
+                              className="cursor-pointer text-red-500"
                               strokeWidth={1.5}
                             />
                           </button>
@@ -161,7 +191,9 @@ export default function ItemComponent({
                       ))}
                     </div>
                   ) : (
-                    <h3>Nenhum link cadastrado</h3>
+                    <h3 className="text-center text-muted-foreground">
+                      Nenhum link cadastrado
+                    </h3>
                   )}
                 </div>
               </DialogContent>
