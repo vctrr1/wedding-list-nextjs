@@ -58,14 +58,16 @@ export async function updateItemAsCompleted(
 
 export async function updateItem(formData: FormData, category: string) {
   const entries = Array.from(formData.entries());
-  const { id, name, price } = Object.fromEntries(entries) as {
+  const { id, name, price, gift } = Object.fromEntries(entries) as {
     id: string;
     name: string;
     price: string;
+    gift: string;
   };
 
   // Converter o preço para número
   const parsedPrice = price ? parseFloat(price.replace(",", ".")) : null;
+  const gitfBoolean = gift === "true";
 
   try {
     await db.item.update({
@@ -76,6 +78,7 @@ export async function updateItem(formData: FormData, category: string) {
         name: name,
         category: category,
         price: parsedPrice,
+        gift: gitfBoolean,
       },
     });
     revalidatePath("/main");

@@ -14,12 +14,14 @@ import SelectCategoryItem from "./select-category";
 import React, { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { updateItem } from "@/app/_actions/items";
+import { Switch } from "./ui/switch";
 
 interface UpdateItemsProps {
   itemId: string;
   itemName: string;
   itemPrice?: number | null;
   itemCategory: string;
+  gift: boolean;
 }
 
 export default function UpdateItem({
@@ -27,9 +29,11 @@ export default function UpdateItem({
   itemName,
   itemPrice,
   itemCategory,
+  gift,
 }: UpdateItemsProps) {
   const [name, setName] = useState(itemName);
   const [category, setCategory] = useState(itemCategory);
+  const [isGift, setIsGift] = useState(gift);
   const [isFormValid, setIsFormValid] = useState(false);
 
   const handleSelectCategory = (value: string) => {
@@ -41,6 +45,7 @@ export default function UpdateItem({
 
     const formData = new FormData(e.currentTarget);
     formData.append("id", itemId);
+    formData.append("gift", String(isGift));
 
     const result = await updateItem(formData, category);
 
@@ -66,7 +71,9 @@ export default function UpdateItem({
       </DialogTrigger>
       <DialogContent className="sm:w-[50%] w-[90%] flex flex-col items-center justify-center rounded-lg">
         <DialogHeader className="mt-4 flex items-center">
-          <DialogTitle className="text-xl">Atualizar Item</DialogTitle>
+          <DialogTitle className="text-xl font-normal">
+            Atualizar Item
+          </DialogTitle>
           <DialogDescription>Preencha o form.</DialogDescription>
         </DialogHeader>
 
@@ -98,6 +105,10 @@ export default function UpdateItem({
               defaultValue={itemPrice?.toLocaleString("pt-BR") ?? ""}
               className="w-[80%]"
             />
+          </div>
+          <div className="flex items-center w-full justify-between">
+            <label>Presente: </label>
+            <Switch checked={isGift} onCheckedChange={setIsGift} />
           </div>
           <div className="flex items-center space-x-2 w-full justify-between pb-2">
             <label className="text-lg">Categoria: </label>

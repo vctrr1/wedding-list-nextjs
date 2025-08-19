@@ -29,16 +29,18 @@ interface ItemComponentProps {
   itemPrice?: number | null;
   itemCategory: string;
   purchased: boolean;
+  gift: boolean;
   links: string[] | null;
 }
 
 export default function ItemComponent({
   itemId,
   itemName,
-  itemPrice,
   itemCategory,
+  itemPrice,
   purchased,
   links,
+  gift,
 }: ItemComponentProps) {
   const { theme } = useTheme();
 
@@ -229,6 +231,7 @@ export default function ItemComponent({
               itemName={itemName}
               itemPrice={itemPrice}
               itemCategory={itemCategory}
+              gift={gift}
             />
             <Dialog>
               <DialogTrigger asChild>

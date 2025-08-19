@@ -14,6 +14,7 @@ interface Item {
   category: string;
   purchased: boolean;
   links: string[] | null;
+  gift: boolean;
   // outros campos, se necessário
 }
 
@@ -122,6 +123,7 @@ export default async function Main() {
                     itemCategory={item.category}
                     purchased={item.purchased}
                     links={item.links}
+                    gift={item.gift}
                     key={item.id}
                   />
                 ) : (
