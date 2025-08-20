@@ -105,7 +105,7 @@ export default function ItemComponent({
             purchased ? "opacity-50" : ""
           } flex items-center gap-3 p-0 justify-between`}
         >
-          <div className="flex items-center gap-3 pl-4">
+          <div className="flex items-center gap-3 pl-4 flex-1 min-w-0">
             <div>
               <input
                 id={itemId}
@@ -135,12 +135,7 @@ export default function ItemComponent({
             <Dialog>
               {/**digalog quando clicado no titulo do item */}
               <DialogTrigger asChild>
-                <div className="flex items-center gap-1">
-                  <h1 className="text-[18px]">{itemName}</h1>
-                  {gift && (
-                    <img src="/gift.svg" alt="Presente" className="w-4 h-4" />
-                  )}
-                </div>
+                <h1 className="text-[18px] truncate">{itemName}</h1>
               </DialogTrigger>
               <DialogContent className="rounded-md sm:w-[70%] w-[90%]">
                 <DialogHeader>
